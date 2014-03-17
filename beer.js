@@ -14,9 +14,18 @@ function priceOf(panier) {
 	if (!goodBeer) throw new Exception("This beer is not good ;)");
 
 	var totalPrice = 0;
+
+	var reduceArray = function(fullArray, toRemove) {
+		for (var i = 0; i < toRemove.length; i++) {
+			var elem = toRemove[i];
+			var idx = fullArray.indexOf(elem);
+			fullArray.splice(idx,1);
+		};
+	}
 	while(panier.length != 0){
 
-		var different = panier.unique().length;
+		var groupeReduc = panier.unique();
+		var different = groupeReduc.length;
 
 		var pourcentage=100;
 		switch(different) {
@@ -35,7 +44,10 @@ function priceOf(panier) {
 			default:
 		}
 
-		totalPrice += ((panier.length * 5) * (pourcentage/100.0));
+		totalPrice += ((different.length * 5) * (pourcentage/100.0));
+
+		panier = reduceArray(panier,groupeReduc);
+
 	}
 
 	return totalPrice;
