@@ -4,6 +4,7 @@
 var beers = ["Guinness", "Chimay", "Loroyse", "Karmeliet", "Kriek"];
 
 function priceOf(panier) {
+	var price = 0;
 	// Known beer?
 	var isAKnownBeer = function(beer, index) {
 		return (beers.indexOf(beer) != -1);
@@ -12,9 +13,26 @@ function priceOf(panier) {
 	var goodBeer = panier.every(isAKnownBeer);
 	if (!goodBeer) throw new Exception("This beer is not good ;)");
 
-	if ((panier.length > 1) && (panier[0] != panier[1])) {
+	var different = panier.unique().length;
 
+	var pourcentage=100;
+	switch(different) {
+		case 2:
+			pourcentage = 95;
+			break;
+		case 3:
+			pourcentage = 90;
+			break;
+		case 4:
+			pourcentage = 80;
+			break;
+		case 5:
+			pourcentage = 75;
+			break;
+		default:
 	}
+	
 
-	return panier.length * 5;
+
+	return ((panier.length * 5) * (pourcentage/100.0));
 }
