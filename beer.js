@@ -2,6 +2,10 @@
 
 // 5 types de bières
 var beers = ["Guinness", "Chimay", "Loroyse", "Karmeliet", "Kriek"];
+var reductions = { 2: 0.95,
+				   3: 0.90,
+				   4: 0.80,
+				   5: 0.75 };
 
 function priceOf(panier) {
 	var price = 0;
@@ -29,28 +33,14 @@ function priceOf(panier) {
 		var groupeReduc = panier.unique();
 		var different = groupeReduc.length;
 
-		var pourcentage=100;
-		switch(different) {
-			case 2:
-				pourcentage = 95;
-				break;
-			case 3:
-				pourcentage = 90;
-				break;
-			case 4:
-				pourcentage = 80;
-				break;
-			case 5:
-				pourcentage = 75;
-				break;
-			default:
+		// Gestion des réductions
+		if (reductions[different] != undefined) {
+			totalPrice += ((different * 5) * reductions[different]);
+		} else {
+			totalPrice += (different * 5);
 		}
 
-		totalPrice += ((different * 5) * (pourcentage/100.0));
-
 		panier = reduceArray(panier,groupeReduc);
-		console.dir(panier);
-
 	}
 
 	return totalPrice;
