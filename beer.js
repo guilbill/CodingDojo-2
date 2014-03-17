@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 // 5 types de bières
 var beers = ["Guinness", "Chimay", "Loroyse", "Karmeliet", "Kriek"];
@@ -28,7 +28,7 @@ function priceOf(panier) {
 		return fullArray;
 	};
 
-	while(panier.length != 0){
+	while (panier.length != 0) {
 
 		var groupeReduc = panier.unique();
 		var different = groupeReduc.length;
