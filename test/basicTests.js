@@ -37,4 +37,16 @@ describe("Basic tests", function() {
     it("Si on a 4 bières dont 3 différentes, la remise se fait que sur les 3", function(){
     	expect(priceOf(["Guinness","Guinness","Kriek","Chimay"])).toBe(18.5);
     });
+
+    it("Si on a G G C C L L K alors on doit payer 29.5€", function(){
+    	expect(priceOf(["Guinness",
+    					"Chimay",
+    					"Loroyse",
+
+    					"Guinness",
+    					"Loroyse",
+    					"Chimay",
+    					"Kriek"
+    					])).toBe(29.5);
+    });
 });
