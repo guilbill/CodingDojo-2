@@ -8,5 +8,10 @@ describe("Basic tests", function() {
        expect(priceOf(["Guinness"])).toBe(5);
     });
 
+    it("un panier contenant X bières du même type coûtera X * 5 euros", function(){
+    	pending();
+
+    });
+
 
 });
