@@ -13,5 +13,10 @@ describe("Basic tests", function() {
 
     });
 
-
+    it("Il n'y a que 5 types de bières", function() {
+    	var nimp = function() {
+    		priceOf(["nimp"]);
+    	};
+    	expect(nimp).toThrow();
+    });
 });
