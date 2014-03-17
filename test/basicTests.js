@@ -5,7 +5,7 @@ describe("Basic tests", function() {
     });
 
     it("Un panier avec 1 bière coûte 5 €", function() {
-       pending();
+       expect(priceOf(["Guinness"])).toBe(5);
     });
 
 
