@@ -21,7 +21,9 @@ function priceOf(panier) {
 			var idx = fullArray.indexOf(elem);
 			fullArray.splice(idx,1);
 		};
-	}
+		return fullArray;
+	};
+
 	while(panier.length != 0){
 
 		var groupeReduc = panier.unique();
@@ -44,9 +46,10 @@ function priceOf(panier) {
 			default:
 		}
 
-		totalPrice += ((different.length * 5) * (pourcentage/100.0));
+		totalPrice += ((different * 5) * (pourcentage/100.0));
 
 		panier = reduceArray(panier,groupeReduc);
+		console.dir(panier);
 
 	}
 
