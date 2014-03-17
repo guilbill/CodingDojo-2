@@ -13,26 +13,30 @@ function priceOf(panier) {
 	var goodBeer = panier.every(isAKnownBeer);
 	if (!goodBeer) throw new Exception("This beer is not good ;)");
 
-	var different = panier.unique().length;
+	var totalPrice = 0;
+	while(panier.length != 0){
 
-	var pourcentage=100;
-	switch(different) {
-		case 2:
-			pourcentage = 95;
-			break;
-		case 3:
-			pourcentage = 90;
-			break;
-		case 4:
-			pourcentage = 80;
-			break;
-		case 5:
-			pourcentage = 75;
-			break;
-		default:
+		var different = panier.unique().length;
+
+		var pourcentage=100;
+		switch(different) {
+			case 2:
+				pourcentage = 95;
+				break;
+			case 3:
+				pourcentage = 90;
+				break;
+			case 4:
+				pourcentage = 80;
+				break;
+			case 5:
+				pourcentage = 75;
+				break;
+			default:
+		}
+
+		totalPrice += ((panier.length * 5) * (pourcentage/100.0));
 	}
-	
 
-
-	return ((panier.length * 5) * (pourcentage/100.0));
+	return totalPrice;
 }

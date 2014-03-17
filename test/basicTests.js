@@ -31,4 +31,8 @@ describe("Basic tests", function() {
     	};
     	expect(nimp).toThrow();
     });
+
+    it("Si on a 4 bières dont 3 différentes, la remise se fait que sur les 3", function(){
+    	expect(priceOf(["Guinness","Guinness","Kriek","Chimay"])).toBe(18.5);
+    });
 });
